@@ -1,0 +1,102 @@
+
+Lnect - Kinect viewer application
+Version 1.0
+                                
+========================================================
+
+With Lnect you will be able to view both RGB and depth cameras as well as change tilt of Microsoft Kinect for Xbox 360 devices. The application by default is set to connect up to 4 Kinect devices present on the host computer. However, you can alter the maximum Kinect devices support in the source file.
+
+The Lnect is built using the following libraries:
+
+Library		version
+-------------------
+GTK+            3
+OpenCV          3
+libfreenect     1
+
+Lnect is tested on Ubuntu 15.04, however you should be able to build the application on other platforms such as Windows and Mac OS from the source.
+
+This application is distributed under zlib license. Please read License for more information
+
+Enjoy!
+
+    Md Imam Hossain (emamhd@gmail.com)
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Setting up Lnect development environment on Ubuntu 15.04 based distributions
+///////////////////////////////////////////////////////////////////////////////
+
+Part One: Install development files
+
+**************************************
+Install essential development packages
+**************************************
+
+in the terminal put the following command:
+
+sudo apt-get install build-essential automake autoconf bison flex freeglut3-dev libxmu-dev libxi-dev libusb-1.0-0-dev libgtk-3-dev libgtkmm-3.0-dev libavcodec-dev libavformat-dev libswscale-dev python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng12-dev libtiff5-dev libjasper-dev libdc1394-22-dev git-core pkg-config
+
+*******************
+Install libfreenect
+*******************
+
+in the terminal put the following commands:
+
+sudo apt-get install libfreenect-dev 
+
+**************
+Install OpenCV
+**************
+
+// download OpenCV and create compile directory
+
+goto http://opencv.org/
+
+and grab opencv-3.0.0
+
+extract the opencv-3.0 archive file
+
+create a folder named build inside the opencv-3.0.0 folder
+
+enter the build folder and open a terminal or open a terminal into the build folder
+
+in the terminal put the following commands:
+
+// setup compile environment for OpenCV
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr -D WITH_OPENMP=ON -D WITH_CUDA=OFF .. 
+
+// compile sources in 4 threads
+make -j 4 
+
+// install OpenCV
+
+sudo make install
+
+Part Two: Setup Integrated Development Environment
+
+***********************
+Install Java VM and JDK
+***********************
+
+First, add Oracle Java repository to the system by putting the following commands into the terminal:
+
+sudo apt-add-repository ppa:webupd8team/java
+sudo apt-get update
+
+Then, install by the following commands:
+
+sudo apt-get install -f
+sudo apt-get install oracle-java8-installer oracle-java8-set-default oracle-jdk7-installer
+
+***************************************************
+Install NetBeans Integrated Development Environment
+***************************************************
+
+First, following https://netbeans.org download latest NetBeans version (8.0.2)
+and then set executable permission of the downloaded file by going into the file properties dialogue
+and finally, run the downloaded file and install NetBeans by following online instructions
+
+Now you can open the Lnect project in the NetBeans
+
